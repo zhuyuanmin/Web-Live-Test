@@ -52,14 +52,14 @@
             const button3 = document.querySelector('#photo')
             const img = document.querySelector('#img')
             const download = document.querySelector('#a-href')
-            
+
             button2.setAttribute('disabled', 'disabled')
 
             button.onclick = function () {
-                this.disabled = true
-                button2.removeAttribute('disabled')
-
                 invokeGetDisplayMedia(stream => {
+                    this.disabled = true
+                    button2.removeAttribute('disabled')
+                    
                     video.srcObject = stream
 
                     // 监听共享结束事件
@@ -98,6 +98,11 @@
 
             function invokeGetDisplayMedia(success) {
                 const constraints = { video: true }
+                // 调起摄像头、音频
+                // navigator.mediaDevices.getUserMedia({
+                //     audio: true,
+                //     video: { width: 1280, height: 720 }
+                // })
                 if (navigator.mediaDevices.getDisplayMedia) {
                     navigator.mediaDevices.getDisplayMedia(constraints).then(success)
                 } else {
