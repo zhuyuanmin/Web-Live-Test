@@ -82,7 +82,7 @@
                 const context = canvas.getContext("2d")
                 canvas.width = window.innerWidth
                 canvas.height = window.innerHeight
-                context.drawImage(video, 0, 0, window.innerWidth, window.innerHeight)
+                context.drawImage(video, 0, 0, canvas.width, canvas.height)
                 img.src = canvas.toDataURL("image/png")
                 download.setAttribute('href', img.src)
             }
